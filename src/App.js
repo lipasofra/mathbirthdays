@@ -1,25 +1,70 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import Years from './components/Years';
+import Months from './components/Months';
+import Days from './components/Days';
+import _range from "lodash/range"
 
-function App() {
+
+
+const App = () => {
+
+  const [year, setYear] = useState(null)
+  const [month, setMonth] = useState('')
+  const [day, setDay] = useState('')
+
+
+  const handleChangeYear = (value) => {
+    console.log(value)
+    // setYear(value.target.value)
+    setYear(value.value)
+  }
+
+  // const handleChangeYear = (name, value) => {
+  //   console.log(value)
+  //   // setYear(value.target.value)
+  //   setYear(value)
+
+  // }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Welcome</h1>
+      <h3>Enter your birth date</h3>
+
+      <Years
+        year = {year}
+        handleChangeYear = {handleChangeYear}
+      />
+
+      { 
+        year ? 
+        <Months 
+        
+        /> : <></>
+
+      }
+      { 
+        month ? 
+        <Days 
+        
+        /> : <></>
+
+      }
+
     </div>
-  );
+
+
+
+  )
+
+
+
+
+
+
+
 }
 
 export default App;
