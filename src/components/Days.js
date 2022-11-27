@@ -1,6 +1,8 @@
 import React from 'react'
 import _range from "lodash/range"
 import { useEffect, useState } from 'react';
+import Select from 'react-select'
+import Picker from 'react-scrollable-picker'
 
 
 
@@ -46,6 +48,8 @@ const Days = (props) => {
                 setOptionsDays(optionsNoLeapFebruary)
             } else if ((props.year % 100 === 0) && (props.year % 400 === 0)){
                 setOptionsDays(optionsLeapFebruary)
+            } else {
+                setOptionsDays(optionsNoLeapFebruary)
             }
         }
 
@@ -57,17 +61,16 @@ const Days = (props) => {
     return (
         <div>
             <Select
-                onChange = {props.handleChangeYear}
-                placeholder = "Year"
-                defaultValue={{label:2000, value:2000}}
-                options = {optionsYears}
+                onChange = {props.handleChangeDay}
+                placeholder = "Day"
+                options = {optionsDays}
             />
-            <select id="selectYear" onChange={props.handleChangeYear} value={props.year || 2000}>
+            {/* <select id="selectDay" onChange={props.handleChangeDay}>
                 {_range(1910,2022).map(i => {
                     return(
                         <option value={i} key={i}>{i}</option>
                     )})}
-            </select>
+            </select> */}
             <Picker 
                 optionGroups={optionGroups}
                 valueGroups={valueGroups}

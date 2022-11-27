@@ -20,6 +20,11 @@ const App = () => {
     setYear(value.value)
   }
 
+  const handleChangeMonth = (event) => {
+    console.log(event.target.innerText)
+    setMonth(event.target.innerText)
+  }
+
   // const handleChangeYear = (name, value) => {
   //   console.log(value)
   //   // setYear(value.target.value)
@@ -41,7 +46,8 @@ const App = () => {
       { 
         year ? 
         <Months 
-        
+          // year = {year}
+          handleChangeMonth = {handleChangeMonth}
         /> : <></>
 
       }
