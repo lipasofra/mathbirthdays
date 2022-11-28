@@ -12,7 +12,7 @@ const App = () => {
   const [year, setYear] = useState(null)
   const [month, setMonth] = useState(null)
   const [day, setDay] = useState(null)
-  const [displayMessage, setDisplayMessage] = useState(false)
+  const [message, setMessage] = useState(null)
   const [optionsDays, setOptionsDays] = useState([])
 
   let tenPowerDate
@@ -24,77 +24,85 @@ const App = () => {
   //   setYear(value.value)
   // }
 
+  const handleChangeYear = (name, value) => {
+    console.log(value)
+    setYear(value)
+    if(day){
+      calculateMath(day, month, value)
+    }
+
+  }
+
   const handleChangeMonth = (event) => {
     console.log(event.target.innerText)
     setMonth(parseInt(event.target.dataset.value))
     console.log(event.target.dataset.value)
     console.log(parseInt(event.target.dataset.value) === 1)
     optionGroupsDays(event.target.innerText)
+    if(day){
+      calculateMath(day, parseInt(event.target.dataset.value), year )
+    }
   }
 
   const handleChangeDay = (value) => {
     console.log(value.value)
     setDay(value.value)
-    calculateMath()
+    calculateMath(value.value, month, year)
   }
 
-  const calculateMath = () => {
-    //calculos para le mensajito
-
-    console.log(day)
+  const calculateMath = (dayValue, monthValue, yearValue) => {
+    
     const oneDay = 24*60*60*1000
-    const birthDate = new Date(year, month, day)
+    const birthDate = new Date(yearValue, monthValue, dayValue)
     const today = new Date()
-
-    const daysDifference = Math.round(Math.abs((birthDate - today)/oneDay))
-    console.log(daysDifference)
-
-    const exp = Math.ceil(Math.log(daysDifference, 10))
+    
+    if(birthDate < today){
+      const daysDifference = Math.round(Math.abs((birthDate - today)/oneDay))
+    
+    const exp = Math.ceil(Math.log10(daysDifference))
     tenPowerDays = Math.pow(10, exp)
-    // const birthDays = Math.round(Math.abs((birthDate)/oneDay))
-    // (birthDays + tenPowerDays)/
-    tenPowerDate = birthDate.getDate() + tenPowerDays
-    console.log(tenPowerDate)
+    
+    tenPowerDate = birthDate
+    tenPowerDate.setDate(tenPowerDate.getDate() + tenPowerDays)
 
-    setDisplayMessage(true)
+    setMessage(`Your next math birthday is your ${tenPowerDays}-day-old birthday 
+      on ${tenPowerDate.getFullYear()}-${(tenPowerDate.getMonth()+1).toString().padStart(2,'0')}-${tenPowerDate.getDate()} !`)
+    
+    } else {
+      setMessage("Please choose a date before today to calculate your mathbirthday")
+    }
+
+    
   }
 
-  const handleChangeYear = (name, value) => {
-    console.log(value)
-    // setYear(value.target.value)
-    setYear(value)
+ 
+  let optionsEvenMonth = _range(1,31).map(i => {
+      return {
+      value: i, 
+      label: i
+      }
+  })
 
-  }
+  let optionsOddMonth = _range(1,32).map(i => {
+      return {
+      value: i, 
+      label: i
+      }
+  })
 
-  
+  let optionsLeapFebruary = _range(1,30).map(i => {
+      return {
+      value: i, 
+      label: i
+      }
+  })
 
-    let optionsEvenMonth = _range(1,31).map(i => {
-        return {
-        value: i, 
-        label: i
-        }
-    })
-
-    let optionsOddMonth = _range(1,32).map(i => {
-        return {
-        value: i, 
-        label: i
-        }
-    })
-
-    let optionsLeapFebruary = _range(1,30).map(i => {
-        return {
-        value: i, 
-        label: i
-        }
-    })
-
-    let optionsNoLeapFebruary = _range(1,29).map(i => {
-        return {
-        value: i, 
-        label: i
-        }
-    })
+  let optionsNoLeapFebruary = _range(1,29).map(i => {
+      return {
+      value: i, 
+      label: i
+      }
+  })
 
 
   const optionGroupsDays = (selectedMonth) => {
@@ -123,8 +131,20 @@ const App = () => {
 
   const titleStyle = {
     textAlign: "center",
-    fontFamily: 'Lora',
-    fontSize: '50%',
+    // fontFamily: 'Lora',
+    fontFamily: 'Patrick Hand',
+    // fontSize: '10%',
+    color: "#C37B89"
+
+  }
+
+  const messageStyle = {
+    textAlign: "center",
+    fontFamily: 'Patrick Hand',
+    fontSize: '180%',
+    marginTop: '5%',
+    color: "#C37B89"
+    
 
   }
 
@@ -158,9 +178,9 @@ const App = () => {
 
       }
       {
-        displayMessage ? 
+        message ? 
         <div>
-          <p>Your next math brithday is your {tenPowerDays}-day-old birthday on {tenPowerDate} date</p>
+          <p style={messageStyle}>{message}</p>
         </div> : <></>
       }
 

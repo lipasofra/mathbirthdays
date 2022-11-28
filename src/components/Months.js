@@ -11,24 +11,24 @@ const Months = ({handleChangeMonth}) => {
             <table className="table table-bordered">
                 <tbody>
                     <tr>
-                        <td onClick={handleChangeMonth} data-value={1}>Jan</td>
-                        <td onClick={handleChangeMonth} data-value={2}>Feb</td>
-                        <td onClick={handleChangeMonth} data-value={3}>Mar</td>
+                        <td onClick={handleChangeMonth} data-value={0}>Jan</td>
+                        <td onClick={handleChangeMonth} data-value={1}>Feb</td>
+                        <td onClick={handleChangeMonth} data-value={2}>Mar</td>
                     </tr>
                     <tr>
-                        <td onClick={handleChangeMonth} data-value={4}>Apr</td>
-                        <td onClick={handleChangeMonth} data-value={5}>May</td>
-                        <td onClick={handleChangeMonth} data-value={6}>Jun</td>
+                        <td onClick={handleChangeMonth} data-value={3}>Apr</td>
+                        <td onClick={handleChangeMonth} data-value={4}>May</td>
+                        <td onClick={handleChangeMonth} data-value={5}>Jun</td>
                     </tr>
                     <tr>
-                        <td onClick={handleChangeMonth} data-value={7}>Jul</td>
-                        <td onClick={handleChangeMonth} data-value={8}>Aug</td>
-                        <td onClick={handleChangeMonth} data-value={9}>Sep</td>
+                        <td onClick={handleChangeMonth} data-value={6}>Jul</td>
+                        <td onClick={handleChangeMonth} data-value={7}>Aug</td>
+                        <td onClick={handleChangeMonth} data-value={8}>Sep</td>
                     </tr>
                     <tr>
-                        <td onClick={handleChangeMonth} data-value={10}>Oct</td>
-                        <td onClick={handleChangeMonth} data-value={11}>Nov</td>
-                        <td onClick={handleChangeMonth} data-value={12}>Dec</td>
+                        <td onClick={handleChangeMonth} data-value={9}>Oct</td>
+                        <td onClick={handleChangeMonth} data-value={10}>Nov</td>
+                        <td onClick={handleChangeMonth} data-value={11}>Dec</td>
                     </tr>
                 </tbody>
             </table>
