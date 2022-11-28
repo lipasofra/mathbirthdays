@@ -4,15 +4,15 @@ import Picker from 'react-scrollable-picker'
 import Select from 'react-select'
 
 
+let optionsYears = _range(1910,2023).map(i => {
+    return {
+    value: i, 
+    label: i
+    }
+})
+
 const Years = (props) => {
 
-    let optionsYears = _range(1910,2022).map(i => {
-        return {
-        value: i, 
-        label: i
-        }
-    })
-    
     let optionGroups = {year: optionsYears}
     
     let valueGroups = {year: props.year || 2000}
@@ -20,7 +20,7 @@ const Years = (props) => {
 
     return (
         <div>
-            <Select
+            {/* <Select
                 onChange = {props.handleChangeYear}
                 placeholder = "Year"
                 defaultValue={{label:2000, value:2000}}
@@ -31,7 +31,7 @@ const Years = (props) => {
                     return(
                         <option value={i} key={i}>{i}</option>
                     )})}
-            </select>
+            </select> */}
             <Picker 
                 optionGroups={optionGroups}
                 valueGroups={valueGroups}

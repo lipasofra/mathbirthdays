@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+table td {
+  text-align: center;
+  /* font-family: 'Nerko One', cursive; */
+  font-family: 'Patrick Hand', cursive;
+  font-size: x-large;
+}
+table td:hover {
+  background-color: rgba(197, 197, 197, 0.459);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
