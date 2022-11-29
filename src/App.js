@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Years from './components/Years';
 import Months from './components/Months';
 import Days from './components/Days';
@@ -14,6 +14,7 @@ const App = () => {
   const [day, setDay] = useState(null)
   const [message, setMessage] = useState(null)
   const [optionsDays, setOptionsDays] = useState([])
+  const [cell, setCell] = useState('')
 
   let tenPowerDate
   let tenPowerDays
@@ -25,7 +26,6 @@ const App = () => {
   // }
 
   const handleChangeYear = (name, value) => {
-    console.log(value)
     setYear(value)
     if(day){
       calculateMath(day, month, value)
@@ -34,18 +34,20 @@ const App = () => {
   }
 
   const handleChangeMonth = (event) => {
-    console.log(event.target.innerText)
+ 
+    if(cell){cell.style.backgroundColor = 'white'}
+    setCell(event.target)
+
     setMonth(parseInt(event.target.dataset.value))
-    console.log(event.target.dataset.value)
-    console.log(parseInt(event.target.dataset.value) === 1)
+    event.target.style.backgroundColor = '#F6D7A7'
     optionGroupsDays(event.target.innerText)
+
     if(day){
       calculateMath(day, parseInt(event.target.dataset.value), year )
     }
   }
 
   const handleChangeDay = (value) => {
-    console.log(value.value)
     setDay(value.value)
     calculateMath(value.value, month, year)
   }
@@ -106,8 +108,6 @@ const App = () => {
 
 
   const optionGroupsDays = (selectedMonth) => {
-    console.log(selectedMonth)
-    console.log(selectedMonth === 'Mar')
 
     const oddMonths = ['Jan', 'Mar', 'May', 'Jul', 'Aug', 'Oct', 'Dec']
     const evenMonths = ['Apr', 'Jun', 'Sep', 'Nov']
@@ -163,17 +163,15 @@ const App = () => {
       { 
         year ? 
         <Months 
-          // year = {year}
           handleChangeMonth = {handleChangeMonth}
         /> : <></>
 
       }
       { 
-        month ? 
+        month !== null ? 
         <Days 
           handleChangeDay = {handleChangeDay}
           optionsDays = {optionsDays}
-        
         /> : <></>
 
       }
@@ -186,15 +184,7 @@ const App = () => {
 
     </div>
 
-
-
   )
-
-
-
-
-
-
 
 }
 

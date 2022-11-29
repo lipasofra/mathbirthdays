@@ -1,7 +1,7 @@
 import React from 'react'
 import _range from "lodash/range"
 import Picker from 'react-scrollable-picker'
-import Select from 'react-select'
+// import Select from 'react-select'
 
 
 let optionsYears = _range(1910,2023).map(i => {

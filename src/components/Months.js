@@ -1,14 +1,10 @@
 import React from 'react'
-import bootstrap from 'bootstrap'
-// import MonthPicker from '@mui/x-date-pickers/MonthPicker';
-
-// let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 
 const Months = ({handleChangeMonth}) => {
     return (
         <div className="table-responsive">
-            <table className="table table-bordered">
+            <table id="months-table" className="table table-bordered">
                 <tbody>
                     <tr>
                         <td onClick={handleChangeMonth} data-value={0}>Jan</td>

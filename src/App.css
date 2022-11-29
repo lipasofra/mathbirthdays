@@ -29,7 +29,11 @@ table td {
   font-family: 'Patrick Hand', cursive;
   font-size: x-large;
 }
+
 table td:hover {
   background-color: rgba(197, 197, 197, 0.459);
 }
 
+td.active {
+  background: #000;
+}
