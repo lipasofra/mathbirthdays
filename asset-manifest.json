@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/mathbirthdays/static/css/main.69686bb3.css",
-    "main.js": "/mathbirthdays/static/js/main.9145b00b.js",
+    "main.css": "/mathbirthdays/static/css/main.5f741ed3.css",
+    "main.js": "/mathbirthdays/static/js/main.700c57a0.js",
     "static/js/787.419be3a8.chunk.js": "/mathbirthdays/static/js/787.419be3a8.chunk.js",
     "index.html": "/mathbirthdays/index.html",
-    "main.69686bb3.css.map": "/mathbirthdays/static/css/main.69686bb3.css.map",
-    "main.9145b00b.js.map": "/mathbirthdays/static/js/main.9145b00b.js.map",
+    "main.5f741ed3.css.map": "/mathbirthdays/static/css/main.5f741ed3.css.map",
+    "main.700c57a0.js.map": "/mathbirthdays/static/js/main.700c57a0.js.map",
     "787.419be3a8.chunk.js.map": "/mathbirthdays/static/js/787.419be3a8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.69686bb3.css",
-    "static/js/main.9145b00b.js"
+    "static/css/main.5f741ed3.css",
+    "static/js/main.700c57a0.js"
   ]
 }
